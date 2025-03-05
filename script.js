@@ -25,7 +25,7 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
 
   // Function to send email using EmailJS
   function sendEmail() {
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    emailjs.send('testfileattachmentemail', 'template_xt8jkoi', templateParams)
       .then(function(response) {
         alert('Email sent successfully!');
       }, function(error) {
