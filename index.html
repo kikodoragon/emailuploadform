@@ -5,25 +5,23 @@
   <title>Send Email with Attachment</title>
   <!-- Include EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h2>Send Email with Attachment</h2>
   <form id="emailForm">
     <label for="to_email">To:</label>
     <input type="email" id="to_email" name="to_email" required>
-    <br><br>
     
     <label for="subject">Subject:</label>
     <input type="text" id="subject" name="subject" required>
-    <br><br>
     
     <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="5" cols="30" required></textarea>
-    <br><br>
+    <textarea id="message" name="message" rows="5" required></textarea>
     
     <label for="attachment">Attachment:</label>
     <input type="file" id="attachment" name="attachment">
-    <br><br>
     
     <input type="submit" value="Send Email">
   </form>
