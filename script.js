@@ -1,8 +1,11 @@
 document.getElementById('uploadForm').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  var fileInput = document.getElementById('file');
-  var file = fileInput.files[0];
+  var fileInput    = document.getElementById('file');
+  var file         = fileInput.files[0];
+  var recipient    = document.getElementById('recipient').value;
+  var emailSubject = document.getElementById('emailSubject').value;
+  var emailMessage = document.getElementById('emailMessage').value;
   
   if (!file) {
     alert("Please select a file.");
@@ -15,11 +18,14 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
     // e.target.result is a Data URL containing the base64-encoded file.
     var fileData = e.target.result;
     
-    // Prepare form data to send to the Apps Script web app
+    // Prepare a FormData object with all the required parameters.
     var formData = new FormData();
     formData.append("fileData", fileData);
     formData.append("fileName", file.name);
     formData.append("mimeType", file.type);
+    formData.append("recipient", recipient);
+    formData.append("emailSubject", emailSubject);
+    formData.append("emailMessage", emailMessage);
     
     // Replace with your deployed Google Apps Script web app URL.
     var scriptURL = "https://script.google.com/macros/s/AKfycbwZgQ-A-hF6PZHGtoyCUoPf5gHMjb82WFlnrUWHisH-RnKIlMSHDVLhHRU2goj5Bos-EA/exec";
@@ -32,7 +38,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
     .then(data => {
       var resultDiv = document.getElementById('result');
       if(data.status === "success") {
-        resultDiv.innerHTML = "File uploaded successfully! File URL: <a href='" + data.fileUrl + "' target='_blank'>" + data.fileUrl + "</a>";
+        resultDiv.innerHTML = "File uploaded and email sent successfully!<br>File URL: <a href='" + data.fileUrl + "' target='_blank'>" + data.fileUrl + "</a>";
       } else {
         resultDiv.innerHTML = "Upload failed: " + data.message;
       }
@@ -45,3 +51,4 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
   
   reader.readAsDataURL(file);
 });
+
