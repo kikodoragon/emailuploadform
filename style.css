@@ -1,4 +1,4 @@
-/* General body styling */
+/* Overall page styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -11,13 +11,13 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Form styling */
+/* Styling for the form container */
 form {
     background-color: #fff;
     padding: 20px;
-    border: 1px solid #ddd;
     max-width: 500px;
     margin: 0 auto;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
@@ -28,9 +28,9 @@ label {
     font-weight: bold;
 }
 
-/* Input, textarea, and file input styling */
-input[type="email"],
+/* Input fields, textarea, and file input styling */
 input[type="text"],
+input[type="email"],
 textarea,
 input[type="file"] {
     width: 100%;
