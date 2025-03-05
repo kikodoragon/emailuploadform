@@ -1,20 +1,23 @@
-// Initialize EmailJS with your user ID (replace 'YOUR_USER_ID' with your actual EmailJS user ID)
+// Initialize EmailJS with your public key (replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key)
 (function(){
-  emailjs.init("YOUR_USER_ID");
+  emailjs.init("YNkv87i4kDxrrglFV");
 })();
 
 document.getElementById('emailForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  // Gather form data
+  // Capture the user input
+  var fromName = document.getElementById('from_name').value; // User's name
   var toEmail = document.getElementById('to_email').value;
   var subject = document.getElementById('subject').value;
   var message = document.getElementById('message').value;
   var fileInput = document.getElementById('attachment');
   var file = fileInput.files[0];
 
-  // Prepare template parameters
+  // Set up the parameters for the email template.
+  // Make sure the key here (from_name) matches the placeholder in your EmailJS template.
   var templateParams = {
+    from_name: fromName,
     to_email: toEmail,
     subject: subject,
     message: message
@@ -30,17 +33,16 @@ document.getElementById('emailForm').addEventListener('submit', function(event) 
       });
   }
 
-  // If a file is attached, convert it to base64 and then send the email
+  // If a file is attached, convert it to base64 and add it to templateParams
   if (file) {
     var reader = new FileReader();
     reader.onload = function(e) {
-      // The file data is returned as a base64 encoded string
       templateParams.attachment = e.target.result;
       sendEmail();
     };
     reader.readAsDataURL(file);
   } else {
-    // No file attached, send email immediately
     sendEmail();
   }
 });
+
