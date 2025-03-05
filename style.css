@@ -28,10 +28,7 @@ label {
     font-weight: bold;
 }
 
-/* Input fields, textarea, and file input styling */
-input[type="text"],
-input[type="email"],
-textarea,
+/* Input fields styling */
 input[type="file"] {
     width: 100%;
     padding: 8px;
@@ -54,4 +51,10 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+/* Result message styling */
+#result {
+    text-align: center;
+    margin-top: 20px;
 }
