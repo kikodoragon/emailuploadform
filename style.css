@@ -28,8 +28,11 @@ label {
     font-weight: bold;
 }
 
-/* Input fields styling */
-input[type="file"] {
+/* Input fields and textarea styling */
+input[type="file"],
+input[type="email"],
+input[type="text"],
+textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
